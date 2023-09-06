@@ -4,6 +4,8 @@ import App from "./app/App";
 import { BrowserRouter } from "react-router-dom";
 import { createStore } from "./app/store/createStore";
 import { Provider } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const store = createStore();
 

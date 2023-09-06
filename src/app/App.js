@@ -4,7 +4,7 @@ import routes from "./routes";
 function App() {
   const elements = useRoutes(routes());
   return (
-    <div className="App">
+    <div className="App container">
       <h1>APP</h1>
       <div>{elements}</div>
     </div>
