@@ -6,8 +6,11 @@ const httpAuth = axios.create({
 });
 
 const authService = {
-  login: async (payload) => {
-    const { data } = await httpAuth.post("/auth", { login: btoa(payload.login), password: btoa(payload.password) });
+  login: async ({ login, password }) => {
+    const { data } = await httpAuth.post("/auth", {
+      login: btoa(login),
+      password: btoa(password),
+    });
     return data;
   },
 };

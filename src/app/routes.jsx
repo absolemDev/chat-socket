@@ -1,19 +1,26 @@
 import { Navigate } from "react-router-dom";
-import MainPage from "./components/page/mainPage";
 import AuthPage from "./components/page/authPage";
+import MainLayout from "./layouts/mainLayout";
+import TopicPage from "./components/page/topicPage";
 
-const routes = () => [
+const routes = (tokenIsExpired) => [
   {
-    path: "",
-    element: <MainPage />,
+    path: "topics",
+    element: tokenIsExpired ? <MainLayout /> : <Navigate to="/auth" />,
+    children: [
+      {
+        path: "",
+        element: <TopicPage />,
+      },
+    ],
   },
   {
     path: "auth",
-    element: <AuthPage />,
+    element: tokenIsExpired ? <Navigate to="/" /> : <AuthPage />,
   },
   {
     path: "*",
-    element: <Navigate to="/" />,
+    element: <Navigate to="/topics" />,
   },
 ];
 

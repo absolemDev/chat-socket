@@ -1,11 +1,16 @@
 import { useRoutes } from "react-router-dom";
 import routes from "./routes";
+import localStorageService from "./services/localStorage.service";
 
 function App() {
-  const elements = useRoutes(routes());
+  const tokenIsExpired =
+    localStorageService.getTokenExpiresDate() > new Date().getTime();
+  if (!tokenIsExpired) localStorageService.removeAuthData();
+
+  const elements = useRoutes(routes(tokenIsExpired));
+
   return (
     <div className="App container">
-      <h1>APP</h1>
       <div>{elements}</div>
     </div>
   );

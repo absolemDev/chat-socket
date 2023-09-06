@@ -1,10 +1,10 @@
 import httpService from "./http.service";
 
-const topicEndPoint = "/topic";
+const topicEndPoint = "/topics";
 
 const topicService = {
   fetchAll: async () => {
-    const { data } = httpService.get(topicEndPoint);
+    const { data } = await httpService.get(topicEndPoint);
     return data;
   },
 };
